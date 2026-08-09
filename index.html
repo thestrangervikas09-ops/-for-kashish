@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Surprise 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Poppins,sans-serif;
+    color:#512d43;
+    background:
+        radial-gradient(circle at 50% 35%,
+        #ffffff 0%,
+        #fff0f7 50%,
+        #ffd8ea 100%);
+}
+
+.screen{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:25px;
+    text-align:center;
+
+    opacity:1;
+    visibility:visible;
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:scale(.96);
+}
+
+
+/* ================= INTRO ================= */
+
+#intro{
+    cursor:pointer;
+}
+
+.intro-heart{
+    font-size:85px;
+
+    filter:
+        drop-shadow(0 12px 25px rgba(255,70,145,.3));
+
+    animation:heartbeat 1.4s infinite;
+}
+
+#intro h1{
+    margin-top:20px;
+    font-family:'Playfair Display',serif;
+    font-size:clamp(35px,9vw,58px);
+}
+
+.intro-text{
+    margin-top:18px;
+    opacity:.65;
+    font-size:15px;
+}
+
+.tap{
+    margin-top:32px;
+
+    padding:12px 25px;
+
+    border:1px solid #f1a4c7;
+    border-radius:50px;
+
+    background:rgba(255,255,255,.55);
+    backdrop-filter:blur(10px);
+
+    font-size:14px;
+}
+
+
+/* ================= GREETING ================= */
+
+#greeting{
+    background:
+        radial-gradient(circle at 50% 25%,
+        #fff,
+        #fff0f7 70%);
+}
+
+.greeting-small{
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#d66a9c;
+}
+
+.name{
+    margin:15px 0;
+
+    font-family:'Playfair Display',serif;
+    font-size:clamp(40px,11vw,65px);
+
+    color:#e85091;
+}
+
+.message{
+    max-width:600px;
+
+    font-size:16px;
+    line-height:1.8;
+
+    color:#70475f;
+}
+
+.signature{
+    margin-top:28px;
+    font-size:14px;
+    opacity:.65;
+}
+
+#continue{
+    position:absolute;
+    bottom:45px;
+
+    padding:14px 32px;
+
+    border:none;
+    border-radius:50px;
+
+    background:#ef6ca7;
+    color:white;
+
+    font-family:Poppins,sans-serif;
+    font-size:15px;
+
+    box-shadow:
+        0 12px 35px rgba(239,108,167,.35);
+
+    cursor:pointer;
+
+    animation:buttonPulse 2s infinite;
+}
+
+
+/* ================= PETALS ================= */
+
+.petal{
+    position:absolute;
+    top:-30px;
+
+    color:#ff8fbd;
+
+    opacity:.5;
+
+    animation:fall linear infinite;
+}
+
+.p1{
+    left:10%;
+    animation-duration:8s;
+}
+
+.p2{
+    left:30%;
+    animation-duration:11s;
+    animation-delay:2s;
+}
+
+.p3{
+    left:70%;
+    animation-duration:9s;
+    animation-delay:1s;
+}
+
+.p4{
+    left:90%;
+    animation-duration:12s;
+    animation-delay:4s;
+}
+
+
+/* ================= GIFT ================= */
+
+#giftScreen{
+    background:
+        radial-gradient(circle,
+        #fff 0%,
+        #fff0f7 70%);
+}
+
+.gift-title{
+    margin-bottom:50px;
+
+    font-family:'Playfair Display',serif;
+    font-size:26px;
+}
+
+.gift{
+    position:relative;
+
+    width:150px;
+    height:130px;
+
+    cursor:pointer;
+
+    animation:giftFloat 2s ease-in-out infinite;
+}
+
+.box{
+    position:absolute;
+
+    bottom:0;
+
+    width:150px;
+    height:95px;
+
+    background:
+        linear-gradient(135deg,
+        #ff9bc5,
+        #ee5d9a);
+
+    border-radius:8px;
+
+    box-shadow:
+        0 20px 45px rgba(220,70,130,.25);
+}
+
+.box::before{
+    content:"";
+
+    position:absolute;
+
+    left:62px;
+
+    width:27px;
+    height:100%;
+
+    background:#ffe1ec;
+}
+
+.lid{
+    position:absolute;
+
+    top:15px;
+    left:-7px;
+
+    width:164px;
+    height:35px;
+
+    background:#f579ae;
+
+    border-radius:8px;
+
+    z-index:3;
+
+    transition:.8s ease;
+}
+
+.lid::before{
+    content:"";
+
+    position:absolute;
+
+    left:72px;
+
+    width:20px;
+    height:100%;
+
+    background:#ffe1ec;
+}
+
+.bow{
+    position:absolute;
+
+    top:-28px;
+    left:52px;
+
+    font-size:50px;
+
+    z-index:5;
+}
+
+.gift.open .lid{
+    transform:
+        translateY(-85px)
+        rotate(-8deg);
+}
+
+.gift.open{
+    animation:none;
+}
+
+
+/* ================= MEMORY ================= */
+
+#memory{
+    background:
+        radial-gradient(circle at 50% 40%,
+        #fff,
+        #ffeaf4);
+}
+
+
+/* Balloon */
+
+.balloon{
+    position:absolute;
+
+    top:100%;
+    left:50%;
+
+    width:105px;
+    height:130px;
+
+    transform:translateX(-50%);
+
+    background:
+        linear-gradient(145deg,
+        #ffb2d3,
+        #f05c9e);
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    box-shadow:
+        inset -12px -15px 25px rgba(190,30,100,.12),
+        0 18px 40px rgba(240,80,150,.2);
+
+    opacity:0;
+}
+
+.balloon::after{
+    content:"";
+
+    position:absolute;
+
+    width:2px;
+    height:170px;
+
+    background:#c8799d;
+
+    top:125px;
+    left:52px;
+}
+
+.balloon span{
+    position:absolute;
+
+    width:28px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.4);
+
+    top:22px;
+    left:21px;
+
+    transform:rotate(-25deg);
+}
+
+
+/* Flying heart */
+
+.flying-heart{
+    position:absolute;
+
+    left:50%;
+    bottom:-100px;
+
+    transform:
+        translateX(-50%)
+        scale(.4);
+
+    font-size:70px;
+
+    opacity:0;
+
+    filter:
+        drop-shadow(0 10px 20px rgba(255,50,140,.35));
+}
+
+
+/* Small message */
+
+.heart-message{
+    position:absolute;
+
+    bottom:13%;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:23px;
+
+    color:#d84d8d;
+
+    opacity:0;
+}
+
+
+/* ================= FINAL ================= */
+
+#final{
+    background:
+        radial-gradient(circle at 50% 40%,
+        #fff,
+        #ffe8f3);
+}
+
+.final-heart{
+    font-size:70px;
+
+    animation:heartbeat 1.4s infinite;
+
+    filter:
+        drop-shadow(0 10px 25px rgba(255,70,145,.25));
+}
+
+#final h1{
+    margin-top:15px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:45px;
+}
+
+.final-text{
+    max-width:520px;
+
+    margin-top:20px;
+
+    font-size:16px;
+    line-height:1.8;
+}
+
+.final-name{
+    color:#e65391;
+    font-weight:600;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.13);
+    }
+}
+
+@keyframes buttonPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.04);
+    }
+}
+
+@keyframes fall{
+
+    from{
+        transform:
+            translateY(-50px)
+            rotate(0);
+    }
+
+    to{
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+    }
+}
+
+@keyframes giftFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+
+/* Balloon rises */
+
+@keyframes balloonRise{
+
+    0%{
+        top:100%;
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        top:10%;
+        opacity:1;
+    }
+}
+
+
+/* Heart flies with balloon */
+
+@keyframes heartRise{
+
+    0%{
+        bottom:-100px;
+        opacity:0;
+        transform:
+            translateX(-50%)
+            scale(.4)
+            rotate(-10deg);
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    60%{
+        transform:
+            translateX(-50%)
+            scale(1.15)
+            rotate(8deg);
+    }
+
+    100%{
+        bottom:70%;
+        opacity:1;
+        transform:
+            translateX(-50%)
+            scale(1)
+            rotate(-3deg);
+    }
+}
+
+
+@keyframes messageShow{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     1. INTRO
+================================================== -->
+
+<section id="intro" class="screen">
+
+    <div class="intro-heart">💗</div>
+
+    <h1>A Little Surprise</h1>
+
+    <div class="intro-text">
+        Something special is waiting for you...
+    </div>
+
+    <div class="tap">
+        Tap anywhere to begin ✨
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     2. GREETING
+================================================== -->
+
+<section id="greeting" class="screen hidden">
+
+    <div class="petal p1">♡</div>
+    <div class="petal p2">✦</div>
+    <div class="petal p3">♡</div>
+    <div class="petal p4">✦</div>
+
+    <div class="greeting-small">
+        A little message for
+    </div>
+
+    <h1 class="name">
+        KASHISH 💗
+    </h1>
+
+    <p class="message">
+
+        You know, some people just have this really
+        beautiful way of making ordinary moments
+        feel a little better.
+
+        <br><br>
+
+        You're one of those people.
+
+        You're kind, genuinely special,
+        and honestly... pretty amazing to have around. ✨
+
+    </p>
+
+    <div class="signature">
+        Just wanted you to know that. 🌷
+    </div>
+
+    <button id="continue">
+        CLICK HERE ✨
+    </button>
+
+</section>
+
+
+
+<!-- ==================================================
+     3. GIFT
+================================================== -->
+
+<section id="giftScreen" class="screen hidden">
+
+    <div class="gift-title">
+        There's one more little surprise... 🎁
+    </div>
+
+    <div class="gift" id="gift">
+
+        <div class="bow">
+            🎀
+        </div>
+
+        <div class="lid"></div>
+
+        <div class="box"></div>
+
+    </div>
+
+    <p style="
+        margin-top:35px;
+        font-size:14px;
+        opacity:.6;
+    ">
+        Tap the gift 🎁
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     4. BALLOON + HEART
+================================================== -->
+
+<section id="memory" class="screen hidden">
+
+    <div class="balloon">
+
+        <span></span>
+
+    </div>
+
+
+    <div class="flying-heart">
+        💗
+    </div>
+
+
+    <div class="heart-message">
+        A little happiness, just for you ✨
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     5. FINAL
+================================================== -->
+
+<section id="final" class="screen hidden">
+
+    <div class="final-heart">
+        💗
+    </div>
+
+    <h1>
+        Thank You
+    </h1>
+
+    <p class="final-text">
+
+        Thank you for being a part of my life,
+        for the conversations, the laughs,
+        and all those little moments that somehow
+        become memories.
+
+        <br><br>
+
+        <span class="final-name">
+            Thank you for being my friend, KASHISH. 🌷
+        </span>
+
+    </p>
+
+</section>
+
+
+
+<script>
+
+/* ==================================================
+   SCREEN CONTROL
+================================================== */
+
+const intro =
+    document.getElementById("intro");
+
+const greeting =
+    document.getElementById("greeting");
+
+const giftScreen =
+    document.getElementById("giftScreen");
+
+const memory =
+    document.getElementById("memory");
+
+const final =
+    document.getElementById("final");
+
+const gift =
+    document.getElementById("gift");
+
+const balloon =
+    document.querySelector(".balloon");
+
+const heart =
+    document.querySelector(".flying-heart");
+
+const heartMessage =
+    document.querySelector(".heart-message");
+
+
+function showScreen(screen){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(s => {
+
+            s.classList.add("hidden");
+
+        });
+
+    screen.classList.remove("hidden");
+}
+
+
+/* ==================================================
+   STEP 1
+   INTRO → GREETING
+================================================== */
+
+intro.addEventListener("click", function(){
+
+    showScreen(greeting);
+
+});
+
+
+/* ==================================================
+   STEP 2
+   GREETING → GIFT
+================================================== */
+
+document
+    .getElementById("continue")
+    .addEventListener("click", function(){
+
+        showScreen(giftScreen);
+
+    });
+
+
+/* ==================================================
+   STEP 3
+   GIFT → BALLOON + HEART
+================================================== */
+
+gift.addEventListener("click", function(){
+
+    /* Open box */
+
+    gift.classList.add("open");
+
+
+    /* Small pause */
+
+    setTimeout(function(){
+
+        showScreen(memory);
+
+
+        /* Reset animations */
+
+        balloon.style.animation =
+            "balloonRise 4s cubic-bezier(.2,.8,.2,1) forwards";
+
+        heart.style.animation =
+            "heartRise 4s cubic-bezier(.2,.8,.2,1) forwards";
+
+
+        /* Message appears */
+
+        setTimeout(function(){
+
+            heartMessage.style.animation =
+                "messageShow 1.2s ease forwards";
+
+        },3000);
+
+
+        /* Final screen */
+
+        setTimeout(function(){
+
+            showScreen(final);
+
+        },8500);
+
+
+    },900);
+
+});
+
+</script>
+
+</body>
+  </html>
