@@ -4,10 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Little Surprise 💗</title>
+<title>Just Something for You 💗</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600&display=swap');
 
 *{
     margin:0;
@@ -18,40 +19,164 @@
 body{
     min-height:100vh;
     overflow:hidden;
-    font-family:Poppins,sans-serif;
-    color:#512d43;
+
+    font-family:'Poppins',sans-serif;
+
     background:
-        radial-gradient(circle at 50% 35%,
+        radial-gradient(circle at 50% 25%,
         #ffffff 0%,
-        #fff0f7 50%,
-        #ffd8ea 100%);
+        #fff2f8 45%,
+        #ffd9ea 100%);
+
+    color:#56364a;
 }
+
+
+/* ================= SCREEN SYSTEM ================= */
 
 .screen{
     position:absolute;
     inset:0;
 
     display:flex;
-    justify-content:center;
-    align-items:center;
     flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
     padding:25px;
+
     text-align:center;
 
     opacity:1;
     visibility:visible;
 
     transition:
-        opacity .9s ease,
-        transform .9s ease;
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 .hidden{
     opacity:0;
     visibility:hidden;
     pointer-events:none;
+
     transform:scale(.96);
+}
+
+
+/* ================= PASSWORD ================= */
+
+#lockScreen{
+    background:
+        radial-gradient(circle at 50% 30%,
+        #ffffff,
+        #ffeaf4);
+}
+
+.lock-heart{
+    font-size:72px;
+
+    filter:
+        drop-shadow(0 10px 25px rgba(240,70,140,.25));
+
+    animation:pulse 1.6s infinite;
+}
+
+.lock-title{
+    margin-top:20px;
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:
+        clamp(32px,8vw,50px);
+
+    color:#dc5a91;
+}
+
+.lock-subtitle{
+    margin-top:12px;
+
+    font-size:14px;
+
+    opacity:.65;
+}
+
+.password-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    margin-top:30px;
+}
+
+.password-input{
+    width:min(310px,85vw);
+
+    padding:15px 18px;
+
+    border:1px solid #f1a5c6;
+    border-radius:50px;
+
+    outline:none;
+
+    background:rgba(255,255,255,.7);
+
+    text-align:center;
+
+    font-family:Poppins,sans-serif;
+    font-size:15px;
+
+    color:#66394f;
+
+    box-shadow:
+        0 10px 30px rgba(220,80,140,.08);
+}
+
+.password-input:focus{
+    border-color:#df6598;
+
+    box-shadow:
+        0 0 0 4px rgba(223,101,152,.12);
+}
+
+.unlock{
+    margin-top:15px;
+
+    padding:13px 32px;
+
+    border:0;
+    border-radius:50px;
+
+    background:#eb679e;
+
+    color:white;
+
+    font-family:Poppins,sans-serif;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 12px 30px rgba(235,103,158,.3);
+
+    transition:.25s;
+}
+
+.unlock:active{
+    transform:scale(.94);
+}
+
+.error{
+    margin-top:12px;
+
+    font-size:12px;
+
+    color:#d65a78;
+
+    opacity:0;
+}
+
+.error.show{
+    opacity:1;
 }
 
 
@@ -62,38 +187,47 @@ body{
 }
 
 .intro-heart{
-    font-size:85px;
+    font-size:88px;
 
     filter:
         drop-shadow(0 12px 25px rgba(255,70,145,.3));
 
-    animation:heartbeat 1.4s infinite;
+    animation:pulse 1.5s infinite;
 }
 
-#intro h1{
-    margin-top:20px;
-    font-family:'Playfair Display',serif;
-    font-size:clamp(35px,9vw,58px);
-}
-
-.intro-text{
+.intro-title{
     margin-top:18px;
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:
+        clamp(38px,9vw,60px);
+
+    color:#dc5a91;
+}
+
+.intro-subtitle{
+    margin-top:14px;
+
+    font-size:14px;
+
     opacity:.65;
-    font-size:15px;
 }
 
 .tap{
-    margin-top:32px;
+    margin-top:30px;
 
-    padding:12px 25px;
+    padding:11px 23px;
 
-    border:1px solid #f1a4c7;
+    border:1px solid #efb0cb;
+
     border-radius:50px;
 
     background:rgba(255,255,255,.55);
-    backdrop-filter:blur(10px);
 
-    font-size:14px;
+    font-size:13px;
+
+    animation:softPulse 2s infinite;
 }
 
 
@@ -102,99 +236,70 @@ body{
 #greeting{
     background:
         radial-gradient(circle at 50% 25%,
-        #fff,
+        #ffffff,
         #fff0f7 70%);
 }
 
-.greeting-small{
-    font-size:13px;
+.small-heading{
+    font-size:12px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
-    color:#d66a9c;
+
+    color:#d9699b;
 }
 
 .name{
-    margin:15px 0;
+    margin:14px 0;
 
-    font-family:'Playfair Display',serif;
-    font-size:clamp(40px,11vw,65px);
+    font-family:'DM Serif Display',serif;
 
-    color:#e85091;
+    font-size:
+        clamp(45px,12vw,70px);
+
+    color:#df5c96;
 }
 
 .message{
-    max-width:600px;
+    max-width:590px;
 
-    font-size:16px;
-    line-height:1.8;
+    font-size:15px;
 
-    color:#70475f;
+    line-height:1.9;
+
+    color:#71495e;
 }
 
 .signature{
-    margin-top:28px;
-    font-size:14px;
-    opacity:.65;
+    margin-top:25px;
+
+    font-size:13px;
+
+    opacity:.6;
 }
 
-#continue{
+.continue{
     position:absolute;
-    bottom:45px;
 
-    padding:14px 32px;
+    bottom:42px;
 
-    border:none;
+    padding:13px 31px;
+
+    border:0;
+
     border-radius:50px;
 
-    background:#ef6ca7;
+    background:#ed6ba3;
+
     color:white;
 
     font-family:Poppins,sans-serif;
-    font-size:15px;
-
-    box-shadow:
-        0 12px 35px rgba(239,108,167,.35);
 
     cursor:pointer;
 
-    animation:buttonPulse 2s infinite;
-}
-
-
-/* ================= PETALS ================= */
-
-.petal{
-    position:absolute;
-    top:-30px;
-
-    color:#ff8fbd;
-
-    opacity:.5;
-
-    animation:fall linear infinite;
-}
-
-.p1{
-    left:10%;
-    animation-duration:8s;
-}
-
-.p2{
-    left:30%;
-    animation-duration:11s;
-    animation-delay:2s;
-}
-
-.p3{
-    left:70%;
-    animation-duration:9s;
-    animation-delay:1s;
-}
-
-.p4{
-    left:90%;
-    animation-duration:12s;
-    animation-delay:4s;
+    box-shadow:
+        0 12px 30px rgba(237,107,163,.3);
 }
 
 
@@ -203,15 +308,16 @@ body{
 #giftScreen{
     background:
         radial-gradient(circle,
-        #fff 0%,
-        #fff0f7 70%);
+        #ffffff,
+        #ffeaf4);
 }
 
 .gift-title{
     margin-bottom:50px;
 
-    font-family:'Playfair Display',serif;
-    font-size:26px;
+    font-family:'DM Serif Display',serif;
+
+    font-size:27px;
 }
 
 .gift{
@@ -222,7 +328,7 @@ body{
 
     cursor:pointer;
 
-    animation:giftFloat 2s ease-in-out infinite;
+    animation:float 2s ease-in-out infinite;
 }
 
 .box{
@@ -233,12 +339,12 @@ body{
     width:150px;
     height:95px;
 
+    border-radius:8px;
+
     background:
         linear-gradient(135deg,
-        #ff9bc5,
-        #ee5d9a);
-
-    border-radius:8px;
+        #ff9ec7,
+        #ed5d99);
 
     box-shadow:
         0 20px 45px rgba(220,70,130,.25);
@@ -254,7 +360,7 @@ body{
     width:27px;
     height:100%;
 
-    background:#ffe1ec;
+    background:#ffe5ef;
 }
 
 .lid{
@@ -266,13 +372,13 @@ body{
     width:164px;
     height:35px;
 
-    background:#f579ae;
-
     border-radius:8px;
+
+    background:#f477ae;
 
     z-index:3;
 
-    transition:.8s ease;
+    transition:.8s;
 }
 
 .lid::before{
@@ -285,13 +391,13 @@ body{
     width:20px;
     height:100%;
 
-    background:#ffe1ec;
+    background:#ffe5ef;
 }
 
 .bow{
     position:absolute;
 
-    top:-28px;
+    top:-30px;
     left:52px;
 
     font-size:50px;
@@ -310,39 +416,36 @@ body{
 }
 
 
-/* ================= MEMORY ================= */
+/* ================= BALLOON ================= */
 
-#memory{
+#surprise{
     background:
         radial-gradient(circle at 50% 40%,
-        #fff,
+        #ffffff,
         #ffeaf4);
 }
-
-
-/* Balloon */
 
 .balloon{
     position:absolute;
 
-    top:100%;
     left:50%;
+
+    bottom:-180px;
 
     width:105px;
     height:130px;
 
     transform:translateX(-50%);
 
+    border-radius:50% 50% 45% 45%;
+
     background:
         linear-gradient(145deg,
-        #ffb2d3,
-        #f05c9e);
-
-    border-radius:
-        50% 50% 45% 45%;
+        #ffb5d4,
+        #ef5d9e);
 
     box-shadow:
-        inset -12px -15px 25px rgba(190,30,100,.12),
+        inset -12px -15px 25px rgba(180,30,100,.12),
         0 18px 40px rgba(240,80,150,.2);
 
     opacity:0;
@@ -356,13 +459,15 @@ body{
     width:2px;
     height:170px;
 
-    background:#c8799d;
+    background:#c77c9f;
 
     top:125px;
     left:52px;
 }
 
-.balloon span{
+.balloon::before{
+    content:"";
+
     position:absolute;
 
     width:28px;
@@ -372,20 +477,18 @@ body{
 
     background:rgba(255,255,255,.4);
 
-    top:22px;
-    left:21px;
+    top:20px;
+    left:20px;
 
     transform:rotate(-25deg);
 }
-
-
-/* Flying heart */
 
 .flying-heart{
     position:absolute;
 
     left:50%;
-    bottom:-100px;
+
+    bottom:-150px;
 
     transform:
         translateX(-50%)
@@ -399,21 +502,74 @@ body{
         drop-shadow(0 10px 20px rgba(255,50,140,.35));
 }
 
+.balloon.fly{
+    animation:balloonUp 5s ease-out forwards;
+}
 
-/* Small message */
+.flying-heart.fly{
+    animation:heartUp 5s ease-out forwards;
+}
 
-.heart-message{
+
+/* ================= PHOTO ================= */
+
+.photo-wrap{
     position:absolute;
 
-    bottom:13%;
+    left:50%;
 
-    font-family:'Playfair Display',serif;
+    top:50%;
 
-    font-size:23px;
+    transform:
+        translate(-50%,-50%)
+        scale(.5);
 
-    color:#d84d8d;
+    width:min(280px,75vw);
+
+    padding:8px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.75);
+
+    box-shadow:
+        0 20px 60px rgba(180,50,110,.25);
 
     opacity:0;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.photo-wrap.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+.photo{
+    display:block;
+
+    width:100%;
+
+    max-height:420px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+}
+
+.photo-caption{
+    padding:12px 5px 5px;
+
+    font-family:'DM Serif Display',serif;
+
+    font-size:19px;
+
+    color:#d85b91;
 }
 
 
@@ -422,25 +578,22 @@ body{
 #final{
     background:
         radial-gradient(circle at 50% 40%,
-        #fff,
+        #ffffff,
         #ffe8f3);
 }
 
 .final-heart{
-    font-size:70px;
+    font-size:75px;
 
-    animation:heartbeat 1.4s infinite;
-
-    filter:
-        drop-shadow(0 10px 25px rgba(255,70,145,.25));
+    animation:pulse 1.5s infinite;
 }
 
-#final h1{
+.final-title{
     margin-top:15px;
 
-    font-family:'Playfair Display',serif;
+    font-family:'DM Serif Display',serif;
 
-    font-size:45px;
+    font-size:46px;
 }
 
 .final-text{
@@ -448,30 +601,32 @@ body{
 
     margin-top:20px;
 
-    font-size:16px;
-    line-height:1.8;
+    font-size:15px;
+
+    line-height:1.9;
 }
 
 .final-name{
-    color:#e65391;
+    color:#df5c96;
+
     font-weight:600;
 }
 
 
 /* ================= ANIMATIONS ================= */
 
-@keyframes heartbeat{
+@keyframes pulse{
 
     0%,100%{
         transform:scale(1);
     }
 
     50%{
-        transform:scale(1.13);
+        transform:scale(1.12);
     }
 }
 
-@keyframes buttonPulse{
+@keyframes softPulse{
 
     0%,100%{
         transform:scale(1);
@@ -482,22 +637,7 @@ body{
     }
 }
 
-@keyframes fall{
-
-    from{
-        transform:
-            translateY(-50px)
-            rotate(0);
-    }
-
-    to{
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-    }
-}
-
-@keyframes giftFloat{
+@keyframes float{
 
     0%,100%{
         transform:translateY(0);
@@ -508,41 +648,37 @@ body{
     }
 }
 
-
-/* Balloon rises */
-
-@keyframes balloonRise{
+@keyframes balloonUp{
 
     0%{
-        top:100%;
+        bottom:-180px;
         opacity:0;
     }
 
-    20%{
+    15%{
         opacity:1;
     }
 
     100%{
-        top:10%;
+        bottom:110%;
         opacity:1;
     }
 }
 
-
-/* Heart flies with balloon */
-
-@keyframes heartRise{
+@keyframes heartUp{
 
     0%{
-        bottom:-100px;
+        bottom:-150px;
+
         opacity:0;
+
         transform:
             translateX(-50%)
             scale(.4)
             rotate(-10deg);
     }
 
-    20%{
+    15%{
         opacity:1;
     }
 
@@ -554,26 +690,14 @@ body{
     }
 
     100%{
-        bottom:70%;
+        bottom:72%;
+
         opacity:1;
+
         transform:
             translateX(-50%)
             scale(1)
             rotate(-3deg);
-    }
-}
-
-
-@keyframes messageShow{
-
-    from{
-        opacity:0;
-        transform:translateY(15px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
     }
 }
 
@@ -585,18 +709,64 @@ body{
 
 
 <!-- ==================================================
-     1. INTRO
+     PASSWORD
 ================================================== -->
 
-<section id="intro" class="screen">
+<section id="lockScreen" class="screen">
 
-    <div class="intro-heart">💗</div>
+    <div class="lock-heart">🔐</div>
 
-    <h1>A Little Surprise</h1>
+    <h1 class="lock-title">
+        A Little Secret
+    </h1>
 
-    <div class="intro-text">
-        Something special is waiting for you...
+    <p class="lock-subtitle">
+        This little surprise is just for you 💗
+    </p>
+
+    <div class="password-box">
+
+        <input
+            id="password"
+            class="password-input"
+            type="password"
+            placeholder="Enter the password..."
+            autocomplete="off"
+        >
+
+        <button
+            class="unlock"
+            onclick="unlock()"
+        >
+            Unlock ✨
+        </button>
+
+        <div id="error" class="error">
+            Hmm... that's not it 🥺
+        </div>
+
     </div>
+
+</section>
+
+
+<!-- ==================================================
+     INTRO
+================================================== -->
+
+<section id="intro" class="screen hidden">
+
+    <div class="intro-heart">
+        💗
+    </div>
+
+    <h1 class="intro-title">
+        Just Something for You
+    </h1>
+
+    <p class="intro-subtitle">
+        A little thing I wanted you to see...
+    </p>
 
     <div class="tap">
         Tap anywhere to begin ✨
@@ -605,19 +775,13 @@ body{
 </section>
 
 
-
 <!-- ==================================================
-     2. GREETING
+     GREETING
 ================================================== -->
 
 <section id="greeting" class="screen hidden">
 
-    <div class="petal p1">♡</div>
-    <div class="petal p2">✦</div>
-    <div class="petal p3">♡</div>
-    <div class="petal p4">✦</div>
-
-    <div class="greeting-small">
+    <div class="small-heading">
         A little message for
     </div>
 
@@ -627,16 +791,16 @@ body{
 
     <p class="message">
 
-        You know, some people just have this really
-        beautiful way of making ordinary moments
-        feel a little better.
+        Some people have a really beautiful way
+        of making ordinary moments feel a little
+        more special.
 
         <br><br>
 
-        You're one of those people.
+        And honestly, you're one of those people.
 
         You're kind, genuinely special,
-        and honestly... pretty amazing to have around. ✨
+        and someone I'm really glad I got to know. ✨
 
     </p>
 
@@ -644,25 +808,30 @@ body{
         Just wanted you to know that. 🌷
     </div>
 
-    <button id="continue">
+    <button
+        id="continue"
+        class="continue"
+    >
         CLICK HERE ✨
     </button>
 
 </section>
 
 
-
 <!-- ==================================================
-     3. GIFT
+     GIFT
 ================================================== -->
 
 <section id="giftScreen" class="screen hidden">
 
     <div class="gift-title">
-        There's one more little surprise... 🎁
+        There's one more little thing... 🎁
     </div>
 
-    <div class="gift" id="gift">
+    <div
+        class="gift"
+        id="gift"
+    >
 
         <div class="bow">
             🎀
@@ -676,7 +845,7 @@ body{
 
     <p style="
         margin-top:35px;
-        font-size:14px;
+        font-size:13px;
         opacity:.6;
     ">
         Tap the gift 🎁
@@ -685,35 +854,40 @@ body{
 </section>
 
 
-
 <!-- ==================================================
-     4. BALLOON + HEART
+     BALLOON + HEART + PHOTO
 ================================================== -->
 
-<section id="memory" class="screen hidden">
+<section id="surprise" class="screen hidden">
 
-    <div class="balloon">
-
-        <span></span>
-
-    </div>
-
+    <div class="balloon"></div>
 
     <div class="flying-heart">
         💗
     </div>
 
+    <div
+        id="photoWrap"
+        class="photo-wrap"
+    >
 
-    <div class="heart-message">
-        A little happiness, just for you ✨
+        <img
+            src="kashish.jpg"
+            class="photo"
+            alt="A special memory"
+        >
+
+        <div class="photo-caption">
+            A little memory, just for you 💗
+        </div>
+
     </div>
 
 </section>
 
 
-
 <!-- ==================================================
-     5. FINAL
+     FINAL
 ================================================== -->
 
 <section id="final" class="screen hidden">
@@ -722,7 +896,7 @@ body{
         💗
     </div>
 
-    <h1>
+    <h1 class="final-title">
         Thank You
     </h1>
 
@@ -730,8 +904,8 @@ body{
 
         Thank you for being a part of my life,
         for the conversations, the laughs,
-        and all those little moments that somehow
-        become memories.
+        and all those little moments that
+        somehow become memories.
 
         <br><br>
 
@@ -748,36 +922,55 @@ body{
 <script>
 
 /* ==================================================
-   SCREEN CONTROL
+   PASSWORD
 ================================================== */
 
-const intro =
-    document.getElementById("intro");
+const correctPassword = ')(@$@)!)@))(';
 
-const greeting =
-    document.getElementById("greeting");
+function unlock(){
 
-const giftScreen =
-    document.getElementById("giftScreen");
+    const input =
+        document.getElementById("password");
 
-const memory =
-    document.getElementById("memory");
+    const error =
+        document.getElementById("error");
 
-const final =
-    document.getElementById("final");
+    if(input.value === correctPassword){
 
-const gift =
-    document.getElementById("gift");
+        error.classList.remove("show");
 
-const balloon =
-    document.querySelector(".balloon");
+        showScreen(
+            document.getElementById("intro")
+        );
 
-const heart =
-    document.querySelector(".flying-heart");
+    }else{
 
-const heartMessage =
-    document.querySelector(".heart-message");
+        error.classList.add("show");
 
+        input.value = "";
+
+        input.focus();
+
+    }
+}
+
+
+/* Enter key */
+
+document
+    .getElementById("password")
+    .addEventListener("keydown",function(e){
+
+        if(e.key === "Enter"){
+            unlock();
+        }
+
+    });
+
+
+/* ==================================================
+   SCREEN SYSTEM
+================================================== */
 
 function showScreen(screen){
 
@@ -794,83 +987,93 @@ function showScreen(screen){
 
 
 /* ==================================================
-   STEP 1
    INTRO → GREETING
 ================================================== */
 
-intro.addEventListener("click", function(){
-
-    showScreen(greeting);
-
-});
-
-
-/* ==================================================
-   STEP 2
-   GREETING → GIFT
-================================================== */
-
 document
-    .getElementById("continue")
-    .addEventListener("click", function(){
+    .getElementById("intro")
+    .addEventListener("click",function(){
 
-        showScreen(giftScreen);
+        showScreen(
+            document.getElementById("greeting")
+        );
 
     });
 
 
 /* ==================================================
-   STEP 3
-   GIFT → BALLOON + HEART
+   GREETING → GIFT
 ================================================== */
 
-gift.addEventListener("click", function(){
+document
+    .getElementById("continue")
+    .addEventListener("click",function(e){
 
-    /* Open box */
+        e.stopPropagation();
 
-    gift.classList.add("open");
+        showScreen(
+            document.getElementById("giftScreen")
+        );
 
-
-    /* Small pause */
-
-    setTimeout(function(){
-
-        showScreen(memory);
-
-
-        /* Reset animations */
-
-        balloon.style.animation =
-            "balloonRise 4s cubic-bezier(.2,.8,.2,1) forwards";
-
-        heart.style.animation =
-            "heartRise 4s cubic-bezier(.2,.8,.2,1) forwards";
+    });
 
 
-        /* Message appears */
+/* ==================================================
+   GIFT → BALLOON
+================================================== */
 
-        setTimeout(function(){
+document
+    .getElementById("gift")
+    .addEventListener("click",function(){
 
-            heartMessage.style.animation =
-                "messageShow 1.2s ease forwards";
+        const gift =
+            document.getElementById("gift");
 
-        },3000);
-
-
-        /* Final screen */
+        gift.classList.add("open");
 
         setTimeout(function(){
 
-            showScreen(final);
+            showScreen(
+                document.getElementById("surprise")
+            );
 
-        },8500);
+            const balloon =
+                document.querySelector(".balloon");
+
+            const heart =
+                document.querySelector(".flying-heart");
+
+            balloon.classList.add("fly");
+
+            heart.classList.add("fly");
 
 
-    },900);
+            /* Photo appears after balloon scene */
 
-});
+            setTimeout(function(){
+
+                document
+                    .getElementById("photoWrap")
+                    .classList.add("show");
+
+            },3000);
+
+
+            /* Final screen */
+
+            setTimeout(function(){
+
+                showScreen(
+                    document.getElementById("final")
+                );
+
+            },8500);
+
+        },900);
+
+    });
 
 </script>
 
 </body>
-  </html>
+</html>
